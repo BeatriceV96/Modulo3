@@ -1,25 +1,21 @@
-interface Smartphone {
-    credito: number;
+interface iSmartPhone{
+    dito: number;
     numeroChiamate: number;
-    ricarica(importo: number): void;
-    chiamata(durataMinuti: number): void;
-    chiama404(): string;
-    getNumeroChiamata(): number;
-    azzeraChiamata(): void;
-  }
+}
 
-  class User implements Smartphone {
-    nome: string;
-    cognome: string;
-    credito: number;
-    numeroChiamate: number;
-    costoPerMinuto: number;
+class User implements iSmartPhone{
+    credito: number = 0;
+    numeroChiamate: number = 0;
+    costoMinuto:number = 0.20;
+    nome!:string;
+    cognome!:string;
 
-    constructor(nome: string, cognome: string) {
-        this.nome = nome;
-        this.cognome = cognome;
-        this.credito = 0;
-        this.numeroChiamate =0;
-        this.costoPerMinuto = 0.20;
+    constructor(_nome:string, _cognome:string){
+        this.nome = _nome
+        this.cognome = _cognome
+    }
+
+    ricarica(n:number){
+        this.credito += n
     }
 }
