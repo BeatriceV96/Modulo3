@@ -4,17 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ActivePostsComponent } from './active-posts/active-posts.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { InactivePostsComponent } from './inactive-posts/inactive-posts.component';
+import { ActivePostsComponent } from './active-posts/active-posts.component';
+
 
 
 @NgModule({
   declarations: [
-
-
+    AppComponent,
     HomeComponent,
-         ActivePostsComponent,
-         InactivePostsComponent
+    NavbarComponent,
+    InactivePostsComponent,
+    ActivePostsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,3 +26,4 @@ import { InactivePostsComponent } from './inactive-posts/inactive-posts.componen
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
