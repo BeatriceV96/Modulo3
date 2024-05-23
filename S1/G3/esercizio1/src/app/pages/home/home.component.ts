@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { iPost } from '../../Models/ipost';
 import { IJsonContent } from '../../Models/i-json-content';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,33 @@ import { IJsonContent } from '../../Models/i-json-content';
 })
 export class HomeComponent {
   postsArr: iPost[] = [];
+  firstPost!: iPost;
+  randomPosts: iPost[] = [];
 
   ngOnInit() {
-    this.getPosts();
+    this.getPosts().then(() => {
+      let firstPost = this.getFirstPost();
+
+      if (firstPost) {
+        this.firstPost = firstPost;
+      }
+
+      this.randomPosts = this.getRandomPosts();
+    });
   }
 
   async getPosts() {
     const response = await fetch('../../../assets/db.json');
     const posts = <IJsonContent>await response.json();
     this.postsArr = posts.posts;
+  }
+
+  getFirstPost() {
+    return this.postsArr.shift(); // Rimuovo dall'inizio e restituisco l'elemento rimosso
+  }
+
+  getRandomPosts(): iPost[] {
+    const shuffled = [...this.postsArr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 4);
   }
 }
