@@ -1,5 +1,4 @@
 export type Root = Macchina[]
-
 export interface Macchina {
   brand: string
   brandLogo: string
@@ -9,3 +8,4 @@ export interface Macchina {
   price: number
   available: boolean
 }
+
