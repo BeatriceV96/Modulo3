@@ -1,11 +1,10 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './main-contents/navbar/navbar.component';
-import { Macchina } from './Models/imacchine/imacchine.module';
 import { FooterComponent } from './main-contents/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FiatComponent } from './pages/fiat/fiat.component';
@@ -26,9 +25,10 @@ import { Page404Component } from './pages/page404/page404.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,33 +1,24 @@
-import { Component } from '@angular/core';
-import { Macchina } from '../../Models/imacchine/imacchine.module';
+import { Component, OnInit } from '@angular/core';
+import { Macchina } from '../../Models/imacchine';
+import { MacchineServiceService } from './../../Models/macchine.service.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  randomCars:Macchina[] = [];
-  cardArr: Macchina[] = [];
+export class HomeComponent implements OnInit {
+  macchine: Macchina[] = [];
 
-  ngOnInit(){
-    this.getCards()
+  constructor(private macchineService: MacchineServiceService) {}
+
+  ngOnInit(): void {
+    this.getMacchine();
   }
 
-  async getCards():Promise<void>{
-    const response = await fetch('../../../assets/db.json')
-    const cars = <Macchina[]> await response.json()
-
-    this.cardArr = cars
-
-    console.log(this.cardArr)
-
-    this.randomCars = this.getRandomCars()
-    console.log(this.randomCars)
-  }
-
-  getRandomCars(): Macchina[]{
-    const shuffled = [...this.cardArr].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 2);
+  getMacchine(): void {
+    this.macchineService.getMacchine().subscribe((data: Macchina[]) => {
+      this.macchine = data;
+    });
   }
 }
