@@ -1,27 +1,48 @@
-import { NavbarComponent } from './main-components/navbar/navbar.component';
-import { HomeComponent } from './pages/home/home.component';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Route } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ActivePostsComponent } from './pages/active-posts/active-posts.component';
-import { InactivePostsComponent } from './pages/inactive-posts/inactive-posts.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ActivePostsComponent } from './components/active-posts/active-posts.component';
+import { InactivePostsComponent } from './components/inactive-posts/inactive-posts.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
+const routes: Route[] = [
+    {
+        path: '',
+        component: HomeComponent,
+    },
+    {
+        path: 'active',
+        component: ActivePostsComponent,
+    },
+    {
+        path: 'inactive',
+        component: InactivePostsComponent,
+    },
+    {
+        path: 'post/:id',
+        component: PostDetailComponent,
+    },
+    {
+        path: '**',
+        redirectTo: '',
+    },
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NavbarComponent,
-    ActivePostsComponent,
-    InactivePostsComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        NavbarComponent,
+        ActivePostsComponent,
+        InactivePostsComponent,
+        PostDetailComponent,
+    ],
+    imports: [BrowserModule, RouterModule.forRoot(routes)],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -3,18 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "esercizio1": {
+    "soluzioneMod": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
-          "standalone": false
-        },
-        "@schematics/angular:directive": {
-          "standalone": false
-        },
-        "@schematics/angular:pipe": {
-          "standalone": false
+          "style": "scss"
         }
       },
       "root": "",
@@ -22,11 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/esercizio1",
+            "outputPath": "dist/soluzione-mod",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -37,8 +30,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -59,9 +51,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -70,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "esercizio1:build:production"
+              "browserTarget": "soluzioneMod:build:production"
             },
             "development": {
-              "buildTarget": "esercizio1:build:development"
+              "browserTarget": "soluzioneMod:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "esercizio1:build"
+            "browserTarget": "soluzioneMod:build"
           }
         },
         "test": {
@@ -105,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "63f98c97-3bd3-4d0e-bcaa-93f6c4aea493"
   }
 }
