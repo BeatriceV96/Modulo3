@@ -9,5 +9,4 @@ import { Post } from 'src/app/models/post.interface';
 export class ActivePostsComponent {
     @Input() posts: Post[] = [];
 
-
 }
