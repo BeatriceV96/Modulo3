@@ -5,9 +5,7 @@ import { Todo } from '../Models/todo';
   providedIn: 'root'
 })
 export class TodoService {
-   getTodos(): Todo[] {
-     throw new Error('Method not implemented.');
-   }
+
 
    todoArr: Todo [] = [
       {
