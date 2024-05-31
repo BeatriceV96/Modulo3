@@ -10,7 +10,6 @@ import { TodoService } from '../../services/todos.service';
   styleUrl: './users-trovati.component.scss'
 })
 export class UsersTrovatiComponent {
-
   userArr: User[] = [];
   todoArr: Todo[] = [];
 
@@ -21,11 +20,7 @@ export class UsersTrovatiComponent {
     this.todoArr = this.todoSvc.todoArr;
   }
 
-  getTotalByUser(userId: number): number {
-    return this.todoArr.filter(todo => todo.userId === userId).length;
-  }
-
-  getTodosByUser(userId: number): Todo[] {
-    return this.todoArr.filter(todo => todo.userId === userId);
+  getTotalByUser(userId:number): number {
+    return this.todoArr.filter(todo => todo.userId === userId).length //qui uso length per vedere il totale dei
   }
 }

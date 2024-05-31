@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-12 text-center">
@@ -12,11 +13,6 @@
           <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
           <p class="card-text">{{ user.title }}</p>
           <p class="card-text">Total Todos: {{ getTotalByUser(user.id) }}</p>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let todo of getTodosByUser(user.id)">
-              {{ todo.todo }} <span [ngClass]="{'badge bg-success': todo.completed, 'badge bg-danger': !todo.completed}">{{ todo.completed ? 'Completed' : 'Pending' }}</span>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
