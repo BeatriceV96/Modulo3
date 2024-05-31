@@ -11,13 +11,19 @@ import { UserService } from '../../services/users.service';
 })
 export class TodoCompletesComponent {
 
-  todoArr: Todo [] = []
+
+  todoArr: Todo[] = [];
   userArr: User[] = [];
 
   constructor(private todoSvc: TodoService, private userSvc: UserService) {}
 
   ngOnInit() {
-    this.todoArr = this.todoSvc.todoArr;
+    this.todoArr = this.todoSvc.todoArr.filter ( todo => todo.completed );
     this.userArr = this.userSvc.userArr;
   }
+
+  getUserById(userId: number): User | undefined {
+    return this.userArr.find(user => user.id === userId);
+  }
 }
+
