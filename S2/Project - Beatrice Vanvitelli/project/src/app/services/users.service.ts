@@ -5,9 +5,6 @@ import { User } from '../Models/user';
   providedIn: 'root'
 })
 export class UserService {
-  getUsers(): User[] {
-    throw new Error('Method not implemented.');
-  }
 
   userArr: User [] = [
       {
