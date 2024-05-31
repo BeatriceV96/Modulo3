@@ -1,0 +1,29 @@
+.custom-navbar {
+  background-color: #74a0ff;
+  color: white;
+
+  .navbar-brand,
+  .nav-link,
+  .navbar-toggler-icon {
+    color: white !important;
+  }
+
+  .nav-link.active {
+    font-weight: bold;
+  }
+
+  .form-control {
+    border-color: #87CEEB;
+  }
+
+  .btn-outline-success {
+    color: white;
+    border-color: white;
+  }
+
+  .btn-outline-success:hover {
+    background-color: white;
+    color: #87CEEB;
+    border-color: white;
+  }
+}
