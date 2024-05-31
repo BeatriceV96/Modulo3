@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <div class="col-12 text-center">
+      <h2 class="my-4">THE TASKS :</h2>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-12 mb-3" *ngFor="let todo of todoArr">
       <div class="card" [ngClass]="{'bg-success': todo.completed, 'bg-danger': !todo.completed}">
         <div class="card-body">
@@ -12,7 +17,7 @@
           </p>
           <p class="card-text">
             <strong>Completed:</strong>
-            <input type="checkbox" class="input ms-2" [(ngModel)]="todo.completed">
+            <input type="checkbox" class="input ms-2 form-check-input" [(ngModel)]="todo.completed">
           </p>
         </div>
       </div>
