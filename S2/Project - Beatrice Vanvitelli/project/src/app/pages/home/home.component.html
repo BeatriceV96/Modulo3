@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 mb-3" *ngFor="let todo of todoArr">
+      <div class="card" [ngClass]="{'bg-success': todo.completed, 'bg-danger': !todo.completed}">
+        <div class="card-body">
+          <h5 class="card-title">{{ todo.todo }}</h5>
+          <p class="card-text">
+            <strong>User:</strong>
+            <span *ngIf="getUserById(todo.userId) as user">
+              {{ user.firstName }} {{ user.lastName }}
+            </span>
+          </p>
+          <p class="card-text">
+            <strong>Completed:</strong>
+            <input type="checkbox" class="input ms-2" [(ngModel)]="todo.completed">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
