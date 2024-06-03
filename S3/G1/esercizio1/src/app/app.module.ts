@@ -23,6 +23,9 @@ import { RandomColorDirective } from 'src/directives/randomColor.directive';
     HomepageComponent,
     PostDetailComponent,
     SinglePostComponent,
+    PostDetailComponent,
+    InactivePostsComponent,
+    ActivePostsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, RandomColorDirective],
   providers: [],
