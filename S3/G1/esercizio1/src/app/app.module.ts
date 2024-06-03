@@ -1,24 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FavoritesComponent } from './favorites.component';
-import { ErrorsInterceptor } from './errors.interceptor';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ActivePostsComponent } from './active-posts/active-posts.component';
+import { InactivePostsComponent } from './inactive-posts/inactive-posts.component';
+import { Route, RouterModule } from '@angular/router';
+import { HomepageComponent } from './homepage/homepage.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
+import { SinglePostComponent } from './single-post/single-post.component';
+import { FormsModule } from '@angular/forms';
+import { RandomColorDirective } from 'src/directives/randomColor.directive';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    FavoritesComponent
+    NavbarComponent,
+    ActivePostsComponent,
+    InactivePostsComponent,
+    HomepageComponent,
+    PostDetailComponent,
+    SinglePostComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule
-  ],
-  providers: [{
-    provide:HTTP_INTERCEPTORS,
-    useClass:ErrorsInterceptor,
-    multi:true
-  }],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, FormsModule, RandomColorDirective],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

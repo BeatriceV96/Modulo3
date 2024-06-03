@@ -1,27 +1,13 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "9579babd-658a-46be-ae17-41acae17c96d"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "epicode-esercizi": {
+    "soluzione2": {
       "projectType": "application",
       "schematics": {
-        
         "@schematics/angular:component": {
-          "inlineTemplate": true,
-          "inlineStyle": true,
-          "style": "scss",
-          "skipTests": true,
-          "flat": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        },
-        "@schematics/angular:application": {
-          "strict": true
+          "style": "scss"
         }
       },
       "root": "",
@@ -31,11 +17,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/epicode-esercizi",
+            "outputPath": "dist/soluzione2",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -59,12 +48,6 @@
                   "maximumError": "4kb"
                 }
               ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
               "outputHashing": "all"
             },
             "development": {
@@ -82,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "epicode-esercizi:build:production"
+              "browserTarget": "soluzione2:build:production"
             },
             "development": {
-              "browserTarget": "epicode-esercizi:build:development"
+              "browserTarget": "soluzione2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -93,16 +76,18 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "epicode-esercizi:build"
+            "browserTarget": "soluzione2:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -116,5 +101,7 @@
       }
     }
   },
-  "defaultProject": "epicode-esercizi"
+  "cli": {
+    "analytics": "f38b5d10-e49c-486a-bfaa-aaeda2add723"
+  }
 }
