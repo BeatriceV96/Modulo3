@@ -10,7 +10,11 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  onSubmit(form:any) {
-    console.log(form.value)
+  onSubmit(form: any) {
+    if (form.valid) {
+      console.log(form.value);
+    } else {
+      console.error('Form non valido');
+    }
   }
 }
