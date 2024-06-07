@@ -7,7 +7,6 @@ import { iMovie } from '../../models/i-movie';
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
-
 export class MovieListComponent implements OnInit {
   movies: iMovie[] = [];
 
@@ -20,6 +19,7 @@ export class MovieListComponent implements OnInit {
   loadMovies(): void {
     this.movieService.getMovies().subscribe(
       (data: iMovie[]) => {
+        console.log('Movies loaded:', data);
         this.movies = data;
       },
       error => {
@@ -29,7 +29,16 @@ export class MovieListComponent implements OnInit {
   }
 
   toggleFavorite(movie: iMovie): void {
-    movie.isFavourite = !movie.isFavourite;
-    console.log(`${movie.title} is now ${movie.isFavourite ? 'a favorite' : 'not a favorite'}`);
+    if (movie.isFavourite) {
+      this.movieService.removeFavorite(movie.id).subscribe(() => {
+        movie.isFavourite = false;
+        console.log(`${movie.title} removed from favorites`);
+      });
+    } else {
+      this.movieService.addFavorite(movie).subscribe(() => {
+        movie.isFavourite = true;
+        console.log(`${movie.title} added to favorites`);
+      });
+    }
   }
 }
