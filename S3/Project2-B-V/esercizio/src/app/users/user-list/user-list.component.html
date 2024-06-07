@@ -1,1 +1,8 @@
-<p>user-list works!</p>
+<div class="container mt-4">
+  <h2>Registered Users</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let user of users">
+      {{ user.firstName }} {{ user.lastName }} - {{ user.email }}
+    </li>
+  </ul>
+</div>
