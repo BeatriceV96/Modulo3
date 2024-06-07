@@ -1,27 +1,23 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { iUser } from '../../models/i-user';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrl: './register.component.scss'
 })
+
 export class RegisterComponent {
-  registerData = {
+  registerData: Partial<iUser> & { confirmPassword: string } = {
+    firstName: '',
     email: '',
-    password: ''
+    password: '',
+    id: 0,
+    confirmPassword: ''
   };
 
   constructor(private authService: AuthService) {}
 
-  register() {
-    this.authService.register(this.registerData).subscribe(
-      response => {
-        console.log('User registered', response);
-      },
-      error => {
-        console.error('Registration failed', error);
-      }
-    );
-  }
+
 }
