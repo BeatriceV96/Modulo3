@@ -1,0 +1,16 @@
+<div class="container mt-4">
+  <h1>Welcome to MovieApp!</h1>
+  <p>Explore your favorite movies and manage your profile.</p>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let movie of movies">
+      <div class="card mb-4">
+        <img [src]="movie.image" class="card-img-top" [alt]="movie.title">
+        <div class="card-body">
+          <h5 class="card-title">{{ movie.title }}</h5>
+          <p class="card-text">{{ movie.plot }}</p>
+          <p class="card-text"><small class="text-muted">{{ movie.year }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

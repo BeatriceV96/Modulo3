@@ -7,11 +7,21 @@ import { AuthService } from '../auth.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  credentials = { email: '', password: '' };
+  login = {
+    email: '',
+    password: ''
+  };
 
   constructor(private authService: AuthService) {}
 
-  login() {
-    this.authService.login(this.credentials);
+  signIn() {
+    this.authService.login(this.login).subscribe(
+      response => {
+        console.log('User logged in', response);
+      },
+      error => {
+        console.error('Login failed', error);
+      }
+    );
   }
 }

@@ -1,1 +1,32 @@
-<p>register works!</p>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card border-primary" style="width: 22rem;">
+    <div class="card-header bg-primary text-white text-center">
+      Register
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group mb-3">
+          <label for="email">Your Name</label>
+          <input type="email" [(ngModel)]="register.name" class="form-control" name="email" id="email" placeholder="Enteryour name">
+        </div>
+        <div class="form-group mb-3">
+          <label for="email">Email</label>
+          <input type="email" [(ngModel)]="registerData.email" class="form-control" name="email" id="email" placeholder="Enter email">
+        </div>
+        <div class="form-group mb-3">
+          <label for="password">Password</label>
+          <input type="password" [(ngModel)]="registerData.password" class="form-control" name="password" id="password" placeholder="Password">
+        </div>
+        <div class="form-group mb-3">
+          <label for="password">Confirm Password</label>
+          <input type="password" [(ngModel)]="registerData.password" class="form-control" name="password" id="password" placeholder="Confirm Password">
+        </div>
+        <button type="button" (click)="register()" class="btn btn-primary w-100">Register</button>
+      </form>
+      <hr class="my-4">
+      <div class="text-center">
+      </div>
+    </div>
+  </div>
+</div>
+

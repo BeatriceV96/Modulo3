@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card border-primary" style="width: 22rem;">
+    <div class="card-header bg-primary text-white text-center">
+      Login
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group mb-3">
+          <label for="email">Email</label>
+          <input type="email" [(ngModel)]="login.email" class="form-control" name="email" id="email" placeholder="Enter email">
+        </div>
+        <div class="form-group mb-3">
+          <label for="password">Password</label>
+          <input type="password" [(ngModel)]="login.password" class="form-control" name="password" id="password" placeholder="Password">
+        </div>
+        <button type="button" (click)="signIn()" class="btn btn-primary w-100">Accedi</button>
+      </form>
+      <hr class="my-4">
+      <div class="text-center">
+        <small class="text-body-secondary">Non hai ancora un account?<span class="fst-italic"></span>?
+          <a routerLink="/register" class="text-decoration-none text-primary">Sign Up!</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

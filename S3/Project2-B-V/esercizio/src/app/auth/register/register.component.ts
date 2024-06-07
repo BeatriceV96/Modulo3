@@ -4,15 +4,24 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  user = { email: '', password: '' };
+  registerData = {
+    email: '',
+    password: ''
+  };
 
   constructor(private authService: AuthService) {}
 
   register() {
-    this.authService.register(this.user).subscribe(() => {
-    });
+    this.authService.register(this.registerData).subscribe(
+      response => {
+        console.log('User registered', response);
+      },
+      error => {
+        console.error('Registration failed', error);
+      }
+    );
   }
 }

@@ -1,19 +1,19 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
-  styleUrl: './movie-list.component.scss'
+  styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
   movies: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private movieService: MovieService) {}
 
-  ngOnInit() {
-    this.http.get('http://localhost:3000/movies-popular').subscribe((data: any) => {
-      this.movies = data.results;
+  ngOnInit(): void {
+    this.movieService.getMovies().subscribe(data => {
+      this.movies = data;
     });
   }
 }

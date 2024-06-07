@@ -1,34 +1,25 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class AuthService {
-  private userSubject = new BehaviorSubject(null);
-  user$ = this.userSubject.asObservable();
+  private apiUrl = 'http://localhost:3000';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient, private router: Router) {}
-
-  login(credentials: any) {
-    return this.http.post('http://localhost:3000/login', credentials).subscribe((response: any) => {
-      localStorage.setItem('token', response.token);
-      this.userSubject.next(response.user);
-      this.router.navigate(['/movies']);
-    });
+  login(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, credentials);
   }
 
-  register(user: any) {
-    return this.http.post('http://localhost:3000/register', user);
+  register(data: { email: string; password: string }): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/auth/register`, data);
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
-    this.userSubject.next(null);
-    this.router.navigate(['/auth/login']);
+    console.log('User logged out');
   }
 
   isAuthenticated(): boolean {
