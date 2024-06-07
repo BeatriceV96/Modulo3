@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../movies/movie.service';
 import { iMovie } from '../models/i-movie';
+import { MovieService } from '../movies/movie.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrl: './home.component.scss'
 })
 
 export class HomeComponent implements OnInit {

@@ -1,14 +1,13 @@
-import { HomeComponent } from './home/home.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MovieListComponent } from './movies/movie-list/movie-list.component';
-import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+  { path: 'movies', loadChildren: () => import('./movies/movies.module').then(m => m.MoviesModule) },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: 'movies', component: MovieListComponent, canActivate: [AuthGuard] },
-  { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule), canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
