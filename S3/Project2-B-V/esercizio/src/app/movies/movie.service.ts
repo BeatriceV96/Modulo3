@@ -10,7 +10,6 @@ export class MovieService {
   private apiUrl = 'http://localhost:3000/movies';
   private favoritesUrl = 'http://localhost:3000/favorites';
 
-
   constructor(private http: HttpClient) {}
 
   getMovies(): Observable<iMovie[]> {

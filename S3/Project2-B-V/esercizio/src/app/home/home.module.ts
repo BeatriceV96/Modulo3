@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class HomeModule { }

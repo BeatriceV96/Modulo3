@@ -1,41 +1,53 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { iUser } from '../models/i-user';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class AuthService {
-  private apiUrl = 'http://localhost:3000';
-  private authStatus = new BehaviorSubject<boolean>(this.hasToken());
+  private apiUrl = 'http://localhost:3000/users';
+  private token: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/auth/login`, credentials).pipe(
-      tap(response => {
-        localStorage.setItem('token', response.token);
-        this.authStatus.next(true);
+  login(email: string, password: string): Observable<boolean> {
+    return this.http.get<iUser[]>(`${this.apiUrl}?email=${email}&password=${password}`).pipe(
+      map(users => {
+        if (users.length > 0) {
+          this.token = 'mock-token';  // In una reale applicazione, otterresti questo dal server.
+          localStorage.setItem('token', this.token);
+          return true;
+        } else {
+          return false;
+        }
       })
     );
   }
 
-  register(data: iUser): Observable<iUser> {
-    return this.http.post<iUser>(`${this.apiUrl}/auth/register`, data);
+  register(user: iUser): Observable<iUser> {
+    return this.http.post<iUser>(this.apiUrl, user).pipe(
+      tap(newUser => {
+        this.token = 'mock-token';  // In una reale applicazione, otterresti questo dal server.
+        localStorage.setItem('token', this.token);
+      })
+    );
   }
 
   logout(): void {
+    this.token = null;
     localStorage.removeItem('token');
-    this.authStatus.next(false);
+    this.router.navigate(['/auth/login']);
   }
 
-  isAuthenticated(): Observable<boolean> {
-    return this.authStatus.asObservable();
+  isAuthenticated(): boolean {
+    return this.token !== null || localStorage.getItem('token') !== null;
   }
 
-  private hasToken(): boolean {
-    return !!localStorage.getItem('token');
+  getToken(): string | null {
+    return this.token || localStorage.getItem('token');
   }
 }

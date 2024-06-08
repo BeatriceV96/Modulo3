@@ -29,7 +29,7 @@ export class RegisterComponent {
       response => {
         console.log('User registered', response);
       },
-      error => {
+      (error: any) => {
         console.error('Registration failed', error);
       }
     );

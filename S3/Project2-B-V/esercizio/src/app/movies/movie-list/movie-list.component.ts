@@ -12,7 +12,7 @@ import { AuthService } from '../../auth/auth.service';
 export class MovieListComponent implements OnInit {
   movies: iMovie[] = [];
 
-  constructor(private movieService: MovieService, private router: Router,  private authService: AuthService) {}
+  constructor(private movieService: MovieService, private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loadMovies();
@@ -31,20 +31,21 @@ export class MovieListComponent implements OnInit {
   }
 
   toggleFavorite(movie: iMovie): void {
-    if (this.authService.isAuthenticated()) {
-      if (movie.isFavourite) {
-        this.movieService.removeFavorite(movie.id).subscribe(() => {
-          movie.isFavourite = false;
-          console.log(`${movie.title} removed from favorites`);
-        });
-      } else {
-        this.movieService.addFavorite(movie).subscribe(() => {
-          movie.isFavourite = true;
-          console.log(`${movie.title} added to favorites`);
-        });
-      }
-    } else {
+    if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/auth/login']);
+      return;
+    }
+
+    if (movie.isFavourite) {
+      this.movieService.removeFavorite(movie.id).subscribe(() => {
+        movie.isFavourite = false;
+        console.log(`${movie.title} removed from favorites`);
+      });
+    } else {
+      this.movieService.addFavorite(movie).subscribe(() => {
+        movie.isFavourite = true;
+        console.log(`${movie.title} added to favorites`);
+      });
     }
   }
 }

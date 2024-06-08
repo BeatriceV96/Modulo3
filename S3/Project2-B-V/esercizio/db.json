@@ -48,6 +48,38 @@
       "firstName": "Valentina",
       "lastName": "Rossi",
       "id": "7"
+    },
+    {
+      "id": 0,
+      "email": "mario.rossi@example.com",
+      "password": "$2a$10$TxKqpQikW/Yw.CxdDeW3g.SV5R7bFo8Xr8J1rzk5Po8iLfZK3rNkS",
+      "firstName": "Mario",
+      "lastName": "Rossi",
+      "confirmPassword": "$2a$10$TxKqpQikW/Yw.CxdDeW3g.SV5R7bFo8Xr8J1rzk5Po8iLfZK3rNkS"
+    },
+    {
+      "id": 0,
+      "email": "mario.rossi@example.com",
+      "password": "$2a$10$TxKqpQikW/Yw.CxdDeW3g.SV5R7bFo8Xr8J1rzk5Po8iLfZK3rNkS",
+      "firstName": "Mario",
+      "lastName": "Rossi",
+      "confirmPassword": "$2a$10$TxKqpQikW/Yw.CxdDeW3g.SV5R7bFo8Xr8J1rzk5Po8iLfZK3rNkS"
+    },
+    {
+      "id": 0,
+      "email": "mario.rossi@example.com",
+      "password": "$2a$10$TxKqpQikW/Yw.CxdDeW3g.SV5R7bFo8Xr8J1rzk5Po8iLfZK3rNkS",
+      "firstName": "Mario",
+      "lastName": "Rossi",
+      "confirmPassword": "$2a$10$TxKqpQikW/Yw.CxdDeW3g.SV5R7bFo8Xr8J1rzk5Po8iLfZK3rNkS"
+    },
+    {
+      "id": 0,
+      "email": "mario.rossi@example.com",
+      "password": "$2a$10$TxKqpQikW/Yw.CxdDeW3g.SV5R7bFo8Xr8J1rzk5Po8iLfZK3rNkS",
+      "firstName": "Mario",
+      "lastName": "Rossi",
+      "confirmPassword": "$2a$10$TxKqpQikW/Yw.CxdDeW3g.SV5R7bFo8Xr8J1rzk5Po8iLfZK3rNkS"
     }
   ],
   "movies": [

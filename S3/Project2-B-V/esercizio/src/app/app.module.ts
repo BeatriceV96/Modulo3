@@ -16,7 +16,6 @@ import { AuthGuard } from './auth/auth.guard';
   declarations: [
     AppComponent,
     NavbarComponent,
-    UserListComponent
   ],
   imports: [
     BrowserModule,
