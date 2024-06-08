@@ -1,21 +1,22 @@
-.card {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  border-radius: 10px;
+.border-custom {
+  background-color: rgb(0, 0, 0);
 }
 
-.card-header {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+.custom-width {
+  width: 30rem;
 }
 
-.card-body {
-  padding: 20px;
+.btn-custom {
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
-.form-control {
-  border-radius: 5px;
+.btn-custom:hover {
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
-.btn-primary {
-  border-radius: 5px;
+.custom-width {
+  width: 30rem;
 }
+

@@ -1,23 +1,24 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
-  <div class="card border-primary" style="width: 22rem;">
-    <div class="card-header bg-primary text-white text-center">
+  <div class="card border-custom custom-width">
+    <div class="card-header bg-custom text-white text-center">
       Login
     </div>
+    <hr class="my-4">
     <div class="card-body">
       <form>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 text-white">
           <label for="email">Email</label>
           <input type="email" [(ngModel)]="loginData.email" class="form-control" name="email" id="email" placeholder="La tua email">
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 text-white">
           <label for="password">Password</label>
           <input type="password" [(ngModel)]="loginData.password" class="form-control" name="password" id="password" placeholder="La tua Password">
         </div>
-        <button type="button" (click)="login()" class="btn btn-primary w-100">Login</button>
+        <button type="button" (click)="login()" class="btn btn-custom w-100">Login</button>
       </form>
       <hr class="my-4">
       <div class="text-center">
-        <small class="text-body-secondary">Non hai ancora un account?
+        <small class="text-body- text-white">Non hai ancora un account?
           <a routerLink="/auth/register" class="text-decoration-none text-primary">Sign Up!</a>
         </small>
       </div>

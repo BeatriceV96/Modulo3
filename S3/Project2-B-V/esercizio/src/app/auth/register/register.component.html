@@ -1,34 +1,34 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
-  <div class="card border-primary" style="width: 22rem;">
-    <div class="card-header bg-primary text-white text-center">
+  <div class="card border-custom custom-width">
+    <div class="card-header bg-custom text-white text-center">
       Register
     </div>
+    <hr class="my-4">
     <div class="card-body">
       <form>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 text-white">
           <label for="firstName">First Name</label>
           <input type="text" [(ngModel)]="registerData.firstName" class="form-control" name="firstName" id="firstName" placeholder="Il tuo nome">
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 text-white">
           <label for="lastName">Last Name</label>
           <input type="text" [(ngModel)]="registerData.lastName" class="form-control" name="lastName" id="lastName" placeholder="Il tuo cognome">
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 text-white">
           <label for="email">Email</label>
           <input type="email" [(ngModel)]="registerData.email" class="form-control" name="email" id="email" placeholder="La tua email">
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 text-white">
           <label for="password">Password</label>
           <input type="password" [(ngModel)]="registerData.password" class="form-control" name="password" id="password" placeholder="Password">
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 text-white">
           <label for="confirmPassword">Confirm Password</label>
           <input type="password" [(ngModel)]="registerData.confirmPassword" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Conferma Password">
         </div>
+        <button type="button" (click)="register()" class="btn btn-custom w-100 text-white">Registrati!</button>
       </form>
       <hr class="my-4">
-      <button type="button" (click)="register()" class="btn btn-primary w-100">Registrati!</button>
-      </div>
     </div>
   </div>
-
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { iMovie } from '../models/i-movie';
 import { MovieService } from '../movies/movie.service';
+import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,16 +13,47 @@ import { MovieService } from '../movies/movie.service';
 export class HomeComponent implements OnInit {
   movies: iMovie[] = [];
 
-  constructor(private movieService: MovieService) {}
+  constructor(
+    private movieService: MovieService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.movieService.getMovies().subscribe(data => {
-      this.movies = data;
-    });
+    this.loadMovies();
+  }
+
+  loadMovies(): void {
+    this.movieService.getMovies().subscribe(
+      (data: iMovie[]) => {
+        console.log('Movies loaded:', data);
+        this.movies = data;
+      },
+      error => {
+        console.error('Error loading movies', error);
+      }
+    );
+  }
+
+  handleFavoriteClick(movie: iMovie): void {
+    if (this.authService.isAuthenticated()) {
+      this.toggleFavorite(movie);
+    } else {
+      this.router.navigate(['/auth/login']);
+    }
   }
 
   toggleFavorite(movie: iMovie): void {
-    movie.isFavourite = !movie.isFavourite;
-    console.log(`${movie.title} is now ${movie.isFavourite ? 'a favorite' : 'not a favorite'}`);
+    if (movie.isFavourite) {
+      this.movieService.removeFavorite(movie.id).subscribe(() => {
+        movie.isFavourite = false;
+        console.log(`${movie.title} removed from favorites`);
+      });
+    } else {
+      this.movieService.addFavorite(movie).subscribe(() => {
+        movie.isFavourite = true;
+        console.log(`${movie.title} added to favorites`);
+      });
+    }
   }
 }

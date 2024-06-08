@@ -1,4 +1,3 @@
-import { MoviesModule } from './movies/movies.module';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,7 +9,6 @@ import { AuthService } from './auth/auth.service';
 import { TokenInterceptorService } from './auth/token-interceptor.service';
 import { MovieService } from './movies/movie.service';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './auth/login/login.component';
 import { UserService } from './users/user-service.service';
 import { AuthGuard } from './auth/auth.guard';
 
@@ -18,7 +16,6 @@ import { AuthGuard } from './auth/auth.guard';
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent,
     UserListComponent
   ],
   imports: [
@@ -26,7 +23,6 @@ import { AuthGuard } from './auth/auth.guard';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MoviesModule
   ],
   providers: [
     AuthService,

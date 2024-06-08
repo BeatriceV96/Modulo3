@@ -8,7 +8,7 @@
           <h5 class="card-title">{{ movie.title }}</h5>
           <p class="card-text">{{ movie.plott }}</p>
           <p class="card-text"><small class="text-muted">{{ movie.year }}</small></p>
-          <button class="btn btn-primary" (click)="toggleFavorite(movie)">
+          <button class="btn btn-custom" (click)="toggleFavorite(movie)">
             {{ movie.isFavourite ? 'Remove Favorite' : 'Add to Favorite' }}
           </button>
         </div>
