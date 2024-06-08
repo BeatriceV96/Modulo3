@@ -11,7 +11,6 @@ export class TokenInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authToken = this.authService.getToken();
 
-    // Aggiungi l'header Authorization solo se authToken è presente e la chiamata non è per /users o /movies
     if (authToken && !req.url.includes('/users') && !req.url.includes('/movies')) {
       const authReq = req.clone({
         setHeaders: {

@@ -16,8 +16,12 @@ export class MovieService {
     return this.http.get<iMovie[]>(this.apiUrl);
   }
 
+  getFavoriteMovies(): Observable<iMovie[]> {
+    return this.http.get<iMovie[]>(this.favoritesUrl);
+  }
+
   addFavorite(movie: iMovie): Observable<any> {
-    return this.http.post(this.favoritesUrl, { movieId: movie.id });
+    return this.http.post(this.favoritesUrl, { movieId: movie.id, ...movie });
   }
 
   removeFavorite(movieId: string): Observable<any> {

@@ -15,6 +15,9 @@
         <a class="nav-link" routerLink="/movies">Movies</a>
       </li>
       <li class="nav-item" *ngIf="authService.isAuthenticated()">
+        <a class="nav-link" routerLink="/favorite-movies">Favorite Movies</a>
+      </li>
+      <li class="nav-item" *ngIf="authService.isAuthenticated()">
         <a class="nav-link" routerLink="/users">Users</a>
       </li>
       <li class="nav-item" *ngIf="authService.isAuthenticated()">

@@ -9,6 +9,8 @@ import { AuthService } from '../../auth/auth.service';
   templateUrl: './/movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
+
+
 export class MovieListComponent implements OnInit {
   movies: iMovie[] = [];
 
